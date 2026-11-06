@@ -45,7 +45,8 @@ jobs:
 
   image:
     needs: test
-    if: github.event_name == 'push'
+    # Só publica quando o Harbor está configurado (vars.HARBOR_REGISTRY).
+    if: github.event_name == 'push' && vars.HARBOR_REGISTRY != ''
     runs-on: ${{ vars.RUNNER_LABEL || 'ubuntu-latest' }}
     outputs:
       image: ${{ steps.meta.outputs.image }}
