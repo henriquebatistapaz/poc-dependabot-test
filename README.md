@@ -8,7 +8,6 @@ Repo privado para testar o Dependabot (ecossistemas `maven` e `github-actions`).
   - updates `minor` e `patch` de Maven agrupados em um PR (dependências de teste em grupo separado);
   - updates de GitHub Actions agrupados em um PR;
   - prefixos de commit `build(deps)` e `ci(deps)`.
-- `.github/workflows/dependency-review.yml`: revisa dependências em cada PR e falha se houver vulnerabilidade `high` ou licença GPL/AGPL.
 - `.github/workflows/dependabot-metadata.yml`: rotula PRs do Dependabot como `non-major` ou `major-update`. Não aprova nem faz merge.
 
 ## Testes
