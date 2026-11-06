@@ -23,21 +23,21 @@ jobs:
 
       - name: Ensure labels exist
         run: |
-          gh label create non-major --color 0E8A16 --description "Patch or minor update" --force
-          gh label create major-update --color D93F0B --description "Major version update" --force
+          gh label create non-major --repo "$GITHUB_REPOSITORY" --color 0E8A16 --description "Patch or minor update" --force
+          gh label create major-update --repo "$GITHUB_REPOSITORY" --color D93F0B --description "Major version update" --force
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Label patch and minor updates
         if: steps.meta.outputs.update-type == 'version-update:semver-patch' || steps.meta.outputs.update-type == 'version-update:semver-minor'
-        run: gh pr edit "$PR_URL" --add-label "non-major"
+        run: gh pr edit "$PR_URL" --add-label "non-major" --repo "$GITHUB_REPOSITORY"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Label major updates
         if: steps.meta.outputs.update-type == 'version-update:semver-major'
-        run: gh pr edit "$PR_URL" --add-label "major-update"
+        run: gh pr edit "$PR_URL" --add-label "major-update" --repo "$GITHUB_REPOSITORY"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
