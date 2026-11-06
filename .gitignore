@@ -1,0 +1,19 @@
+target/
+*.class
+.idea/
+.vscode/
+.DS_Store
+# AI-Ready generated context and workflow assets: keep out of commits
+/.ai-ready.json
+/AGENTS.md
+/CLAUDE.md
+/GEMINI.md
+/CODEX.md
+/.github/copilot-instructions.md
+/.github/prompts/
+/.github/agents/
+/.github/instructions/
+/.github/skills/
+/.ua/
+# Project documentation workspace is intentionally local for now
+/docs/
