@@ -1,0 +1,83 @@
+name: CI/CD
+
+# Fluxo: testa -> publica imagem no Harbor -> atualiza o manifest do ambiente dev
+# no repo. O Argo CD sincroniza o cluster a partir desse manifest (GitOps).
+#
+# Variáveis e segredos necessários (Settings > Secrets and variables > Actions):
+#   vars.RUNNER_LABEL        label do runner (ex.: label do ARC). Padrão: ubuntu-latest
+#   vars.HARBOR_REGISTRY     host do Harbor (ex.: harbor.example.com)
+#   vars.HARBOR_PROJECT      projeto no Harbor (ex.: dependabot)
+#   secrets.HARBOR_USERNAME  usuário robô do Harbor
+#   secrets.HARBOR_PASSWORD  senha/token do robô do Harbor
+
+on:
+  pull_request:
+  push:
+    branches: [develop, main]
+
+concurrency:
+  group: cicd-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  IMAGE_NAME: dependabot-test-mini
+
+jobs:
+  test:
+    runs-on: ${{ vars.RUNNER_LABEL || 'ubuntu-latest' }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - run: mvn --batch-mode --errors verify
+      - name: Upload jar
+        uses: actions/upload-artifact@v7
+        with:
+          name: dependabot-test-mini-jar
+          path: target/*.jar
+          if-no-files-found: error
+
+  image:
+    needs: test
+    if: github.event_name == 'push'
+    runs-on: ${{ vars.RUNNER_LABEL || 'ubuntu-latest' }}
+    outputs:
+      image: ${{ steps.meta.outputs.image }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Compute image reference
+        id: meta
+        run: |
+          echo "image=${{ vars.HARBOR_REGISTRY }}/${{ vars.HARBOR_PROJECT }}/${IMAGE_NAME}:${GITHUB_SHA::12}" >> "$GITHUB_OUTPUT"
+      - name: Log in to Harbor
+        run: echo "${{ secrets.HARBOR_PASSWORD }}" | docker login "${{ vars.HARBOR_REGISTRY }}" -u "${{ secrets.HARBOR_USERNAME }}" --password-stdin
+      - name: Build image
+        run: docker build -t "${{ steps.meta.outputs.image }}" .
+      - name: Push image
+        run: docker push "${{ steps.meta.outputs.image }}"
+
+  deploy-dev:
+    needs: image
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+    runs-on: ${{ vars.RUNNER_LABEL || 'ubuntu-latest' }}
+    permissions:
+      contents: write   # commits the new image tag to the dev overlay
+    steps:
+      - uses: actions/checkout@v7
+      - name: Update dev overlay image tag
+        run: |
+          OVERLAY=deploy/k8s/overlays/dev/kustomization.yaml
+          TAG="${GITHUB_SHA::12}"
+          NAME="${{ vars.HARBOR_REGISTRY }}/${{ vars.HARBOR_PROJECT }}/${IMAGE_NAME}"
+          sed -i -E "s|(newName: ).*|\1${NAME}|; s|(newTag: ).*|\1\"${TAG}\"|" "$OVERLAY"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OVERLAY"
+          git diff --cached --quiet || git commit -m "chore(dev): deploy ${TAG} [skip ci]"
+          git push origin HEAD:develop
