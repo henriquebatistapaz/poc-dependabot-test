@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dependabot-test-mini-dev
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/henriquebatistapaz/dependabot-test-mini.git
+    targetRevision: develop
+    path: deploy/k8s/overlays/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dependabot-test-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
