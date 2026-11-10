@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dependabot-test-mini
+  name: poc-dependabot-test
   labels:
-    app.kubernetes.io/name: dependabot-test-mini
+    app.kubernetes.io/name: poc-dependabot-test
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: dependabot-test-mini
+      app.kubernetes.io/name: poc-dependabot-test
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: dependabot-test-mini
+        app.kubernetes.io/name: poc-dependabot-test
     spec:
       securityContext:
         runAsNonRoot: true
       containers:
         - name: app
-          image: dependabot-test-mini # replaced by kustomize image override
+          image: poc-dependabot-test # replaced by kustomize image override
           ports:
             - name: http
               containerPort: 8080
