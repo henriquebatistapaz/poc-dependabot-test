@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dependabot-test-mini-dev
+  name: poc-dependabot-test-dev
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/henriquebatistapaz/dependabot-test-mini.git
+    repoURL: https://github.com/henriquebatistapaz/poc-dependabot-test.git
     targetRevision: develop
     path: deploy/k8s/overlays/dev
   destination:
