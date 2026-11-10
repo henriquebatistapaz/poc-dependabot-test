@@ -28,6 +28,6 @@ jobs:
       - name: Upload jar
         uses: actions/upload-artifact@v7
         with:
-          name: dependabot-test-mini-jar
+          name: poc-dependabot-test-jar
           path: target/*.jar
           if-no-files-found: error
