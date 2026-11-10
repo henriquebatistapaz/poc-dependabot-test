@@ -13,7 +13,7 @@ FROM eclipse-temurin:21-jre
 RUN groupadd --system app && useradd --system --gid app app
 WORKDIR /app
 COPY --from=build /workspace/target/lib ./lib
-COPY --from=build /workspace/target/dependabot-test-mini-*.jar ./app.jar
+COPY --from=build /workspace/target/poc-dependabot-test-*.jar ./app.jar
 USER app
 EXPOSE 8080
 ENV PORT=8080
