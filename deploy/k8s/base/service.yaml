@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: dependabot-test-mini
+  name: poc-dependabot-test
 spec:
   selector:
-    app.kubernetes.io/name: dependabot-test-mini
+    app.kubernetes.io/name: poc-dependabot-test
   ports:
     - name: http
       port: 80
