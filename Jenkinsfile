@@ -13,7 +13,7 @@ pipeline {
     environment {
         HARBOR_REGISTRY = credentials('harbor-registry-host') // ou use params/vars
         HARBOR_PROJECT  = 'dependabot'
-        IMAGE_NAME      = 'dependabot-test-mini'
+        IMAGE_NAME      = 'poc-dependabot-test'
         IMAGE_TAG       = "${env.GIT_COMMIT?.take(12) ?: 'local'}"
     }
 
@@ -68,7 +68,7 @@ pipeline {
                         git config user.email "jenkins@localhost"
                         git add "$OVERLAY"
                         git diff --cached --quiet || git commit -m "chore(dev): deploy ${IMAGE_TAG} [skip ci]"
-                        git push "https://x-access-token:${GH_TOKEN}@github.com/henriquebatistapaz/dependabot-test-mini.git" HEAD:develop
+                        git push "https://x-access-token:${GH_TOKEN}@github.com/henriquebatistapaz/poc-dependabot-test.git" HEAD:develop
                     '''
                 }
             }
