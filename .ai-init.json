@@ -1,10 +1,10 @@
 {
-  "ai_version": "27d3a11",
+  "ai_version": "85c264c",
   "profile": "project",
   "installed_at": "2026-11-06",
-  "stack": "Java 27, Maven, GitHub Actions, Jenkins, Kustomize/Argo CD",
+  "stack": "Java 21, Maven, GitHub Actions, Jenkins, Kustomize/Argo CD",
   "platform": "github",
-  "harness": false,
+  "harness": true,
   "understand_anything": false,
   "managed_files": [
     {
@@ -131,6 +131,51 @@
       "source": "automation/doc-check.sh",
       "target": ".ai-init/doc-check.sh",
       "hash": "bc09b8f2537e057bafcff67ce6b194b2857b08cf11a7dfaa7cfdd4bab464fc6e"
+    },
+    {
+      "source": "prompts/delegate.prompt.md",
+      "target": ".github/prompts/delegate.prompt.md",
+      "hash": "889d323c803fda39d88aaab4628d98a3766e0acdd16e96d96cabe676d8704f9c"
+    },
+    {
+      "source": "prompts/incident.prompt.md",
+      "target": ".github/prompts/incident.prompt.md",
+      "hash": "20253d09bd683982053778fe059fe7f43fa6f0627fe3336e6ee41b2f777b60ae"
+    },
+    {
+      "source": "adapters/claude/commands/ci-review.md",
+      "target": ".claude/commands/ci-review.md",
+      "hash": "7b8dd040e5bddc5f152bef0d01bbd0612f4374474f0965e58528a011fc4f8883"
+    },
+    {
+      "source": "adapters/claude/commands/delegate.md",
+      "target": ".claude/commands/delegate.md",
+      "hash": "ee7c4dcc20a6ada4040ca6801031fa89ae4c3d742086e3f01a9f7fbd6ca06454"
+    },
+    {
+      "source": "adapters/claude/commands/incident.md",
+      "target": ".claude/commands/incident.md",
+      "hash": "b5c59f2c075be6b7289403a7b7989e0d463104f10b1bb5453cda5323e4412960"
+    },
+    {
+      "source": "adapters/cursor/commands/ci-review.md",
+      "target": ".cursor/commands/ci-review.md",
+      "hash": "22e3d1e0284b9e66d9f25d8f40825460889029355c8a6767a07a5f620a6581fd"
+    },
+    {
+      "source": "adapters/cursor/commands/delegate.md",
+      "target": ".cursor/commands/delegate.md",
+      "hash": "1043289c06256848e56a718f3e3604364010859f691810e8fb5c3fdf34a6724d"
+    },
+    {
+      "source": "adapters/cursor/commands/incident.md",
+      "target": ".cursor/commands/incident.md",
+      "hash": "5fd081e04a4001c3c0c0f157f82278733ed4e520a5dbf80ceb2ee4430e0bf75e"
+    },
+    {
+      "source": "adapters/claude/agents/security.md",
+      "target": ".claude/agents/security.md",
+      "hash": "a51bc5e073259084552244f4d7be4eb9f0d7b1de191cf662faad7535243d9dc5"
     }
   ],
   "generated_files": [
@@ -177,7 +222,7 @@
     {
       "template": "templates/harness/github-actions-ai-review.yml",
       "target": ".github/workflows/ai-review.yml",
-      "template_hash": "e9e3236e63e47343fdd1ce60545b7b181bfab73b3330e223e26f071d6ccfa77e"
+      "template_hash": "7164fbcde92269fe066a3a03c79263f220f08f3b7214dd08c03099fd9e70a795"
     },
     {
       "template": "templates/agent-env/copilot-setup-steps.template.yml",
@@ -190,8 +235,12 @@
       "template_hash": "af3f3da105e39e3df442b8b7347dbc3f2b815c54342f314d88f8daf27ebc3b0c"
     }
   ],
-  "modified_files": [],
+  "modified_files": [
+    ".claude/settings.json",
+    ".cursor/hooks.json"
+  ],
   "applied_migrations": [
     "0001-spec-layout"
-  ]
+  ],
+  "ai_task": "none"
 }
