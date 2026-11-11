@@ -1,0 +1,2 @@
+2026-11-10T23:18:46-03:00 | /new-spec | model: gpt-6.1-sol | in: ~1900 | out: ~1400
+2026-11-10T23:21:09-03:00 | /next + @qa | REVISE SPEC | [BLOCKER] AC-02/§9.1: comprovar que o Enforcer rejeita o JDK abaixo do piso e que o agente Docker do Jenkins usa o candidato. Definir origem da imagem e como validar o build sem credenciais de publicação. [IMPORTANT] §10/AC-04: identificar a revisão, imagem ou artefato anterior aplicável e o smoke a repetir após o retorno.
