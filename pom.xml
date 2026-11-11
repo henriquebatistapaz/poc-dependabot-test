@@ -6,11 +6,11 @@
   <groupId>com.example</groupId>
   <artifactId>poc-dependabot-test</artifactId>
   <version>0.1.0-SNAPSHOT</version>
-  <properties>
-    <maven.compiler.release>21</maven.compiler.release>
+  <properties><byte-buddy.version>1.18.17</byte-buddy.version><mockito.version>5.24.0</mockito.version>
+    <maven.compiler.release>27</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- Single property: Dependabot bumps it for both the dependency and the annotation processor path. -->
-    <lombok.version>1.18.30</lombok.version>
+    <lombok.version>1.18.48</lombok.version>
   </properties>
   <dependencies>
     <dependency>
