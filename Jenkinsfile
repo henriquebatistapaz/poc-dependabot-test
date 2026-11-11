@@ -5,7 +5,7 @@
 pipeline {
     agent {
         docker {
-            image 'maven:3.9-eclipse-temurin-27'
+            image 'maven:3.10.0-eclipse-temurin-27'
             args '-v $HOME/.m2:/root/.m2'
         }
     }
