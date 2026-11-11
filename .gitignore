@@ -3,6 +3,8 @@ target/
 .idea/
 .vscode/
 .DS_Store
+# AI-Init generated context and workflow assets: keep out of commits
+/.ai-init.json
 /AGENTS.md
 /CLAUDE.md
 /GEMINI.md
@@ -14,4 +16,3 @@ target/
 /.github/skills/
 /.ua/
 # Project documentation workspace is intentionally local for now
-/docs/
