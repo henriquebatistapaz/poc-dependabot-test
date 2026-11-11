@@ -22,12 +22,12 @@ jobs:
       - uses: actions/setup-java@v6
         with:
           distribution: temurin
-          java-version: "21"
+          java-version: "27"
           cache: maven
       - run: mvn --batch-mode --errors verify
       - name: Upload jar
         uses: actions/upload-artifact@v7
         with:
-          name: dependabot-test-mini-jar
+          name: poc-dependabot-test-jar
           path: target/*.jar
           if-no-files-found: error
