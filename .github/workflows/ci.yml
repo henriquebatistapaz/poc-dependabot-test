@@ -18,16 +18,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Deliberately old major version so Dependabot (github-actions) has an update to propose.
-      - uses: actions/checkout@v3
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
         with:
           distribution: temurin
-          java-version: "21"
+          java-version: "27"
           cache: maven
       - run: mvn --batch-mode --errors verify
       - name: Upload jar
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          name: dependabot-test-mini-jar
+          name: poc-dependabot-test-jar
           path: target/*.jar
           if-no-files-found: error
