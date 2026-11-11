@@ -7,7 +7,7 @@
 ## 1. Context
 O ai-init evoluiu. Agora traz: guardrails (hooks que impedem o agente de editar secrets, lockfiles e migrations aplicadas, e de encerrar com testes vermelhos); doc-check, que mantém AGENTS.md e wiki verdadeiros; revisão por IA em todo MR/PR; ambiente de setup para agentes na nuvem; `ai-task` (issue com label vira PR a partir de spec aprovada); `/incident` sem supervisão para erros de produção; MCP somente leitura opcional; `@security`; e `/delegate`.
 
-Stack deste projeto: Java 21, Maven (sem framework), GitHub Actions, Jenkins, Kustomize.
+Stack deste projeto: Java 27, Maven (sem framework), GitHub Actions, Jenkins, Kustomize.
 Observação específica: Projeto de teste de dependabot: ambiente do agente só com maven. Não mexer no fluxo do dependabot.
 
 ## 2. Goal
