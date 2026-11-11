@@ -2,7 +2,7 @@
   "ai_version": "85c264c",
   "profile": "project",
   "installed_at": "2026-11-06",
-  "stack": "Java 21, Maven, GitHub Actions, Jenkins, Kustomize/Argo CD",
+  "stack": "Java 27, Maven, GitHub Actions, Jenkins, Kustomize/Argo CD",
   "platform": "github",
   "harness": true,
   "understand_anything": false,
