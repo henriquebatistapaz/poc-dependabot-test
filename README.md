@@ -1,6 +1,7 @@
 # Dependabot Test Mini
 
 Repo privado para testar o Dependabot (ecossistemas `maven` e `github-actions`).
+O build e as imagens usam Java 27; testes locais requerem JDK 27 e Maven 3.9 ou superior.
 
 - `pom.xml` usa `commons-lang3` 3.12.0 de propósito, para o Dependabot ter uma atualização para propor.
 - `.github/dependabot.yml`:
