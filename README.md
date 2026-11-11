@@ -1,9 +1,15 @@
 # Dependabot Test Mini
 
 Repo privado para testar o Dependabot (ecossistemas `maven` e `github-actions`).
+O build e as imagens usam Java 27; testes locais requerem JDK 27 e Maven 3.9 ou superior.
 
 - `pom.xml` usa `commons-lang3` 3.12.0 de propósito, para o Dependabot ter uma atualização para propor.
-- `.github/dependabot.yml` define atualizações semanais.
+- `.github/dependabot.yml`:
+  - agendamento semanal (segunda, 09:00, São Paulo) com cooldown de 3 dias;
+  - updates `minor` e `patch` de Maven agrupados em um PR (dependências de teste em grupo separado);
+  - updates de GitHub Actions agrupados em um PR;
+  - prefixos de commit `build(deps)` e `ci(deps)`.
+- `.github/workflows/dependabot-metadata.yml`: rotula PRs do Dependabot como `non-major` ou `major-update`. Não aprova nem faz merge.
 
 ## Testes
 
