@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Build stage: compiles, tests and packages the app with its runtime libs.
-FROM maven:3.9-eclipse-temurin-27 AS build
+FROM maven:3.10.0-eclipse-temurin-27 AS build
 WORKDIR /workspace
 COPY pom.xml .
 RUN mvn -q -B dependency:go-offline
