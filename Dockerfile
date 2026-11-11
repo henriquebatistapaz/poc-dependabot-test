@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Build stage: compiles, tests and packages the app with its runtime libs.
-FROM maven:3.9-eclipse-temurin-21 AS build
+FROM maven:3.10.0-eclipse-temurin-27 AS build
 WORKDIR /workspace
 COPY pom.xml .
 RUN mvn -q -B dependency:go-offline
@@ -9,7 +9,7 @@ COPY src ./src
 RUN mvn -q -B verify
 
 # Runtime stage: JRE only, non-root user.
-FROM eclipse-temurin:21-jre
+FROM eclipse-temurin:27-jre
 RUN groupadd --system app && useradd --system --gid app app
 WORKDIR /app
 COPY --from=build /workspace/target/lib ./lib
