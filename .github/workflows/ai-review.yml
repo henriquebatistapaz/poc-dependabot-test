@@ -35,7 +35,7 @@ jobs:
   guard:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Path rules (secrets, immutable files)
@@ -56,7 +56,7 @@ jobs:
       PR_TITLE: ${{ github.event.pull_request.title }}
       PR_BODY: ${{ github.event.pull_request.body }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Check optional review credential
@@ -66,7 +66,7 @@ jobs:
         run: |
           if [ -n "$ANTHROPIC_API_KEY" ]; then echo "configured=true" >> "$GITHUB_OUTPUT"
           else echo "configured=false" >> "$GITHUB_OUTPUT"; echo "AI review skipped: ANTHROPIC_API_KEY is not configured."; fi
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
       - name: Context for the reviewer
