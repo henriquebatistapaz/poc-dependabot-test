@@ -20,7 +20,7 @@ jobs:
   doc-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: AGENTS.md and wiki describe the repo as it is
         run: bash .ai-init/doc-check.sh
       # [agent] Optional: also EXECUTE the AGENTS.md commands marked `# doc-check: run`.
