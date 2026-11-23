@@ -1,4 +1,4 @@
-package com.example.deptest;
+package dev.henrique.deptest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
