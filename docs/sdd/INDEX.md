@@ -20,6 +20,6 @@ Rules: agents NEVER set `Approved`. A spec that needs rework after approval goes
 | [`20261106-release-e-ci-endurecido/`](specs/20261106-release-e-ci-endurecido/spec.md) | — | Done | Workflow de release e CI com mvn verify |
 | [`20261106-qualidade-lombok-enforcer-jacoco/`](specs/20261106-qualidade-lombok-enforcer-jacoco/spec.md) | — | Done | Entidade Lombok, enforcer Java 21 e relatório JaCoCo |
 | [`20261106-pipeline-harbor-k8s-argocd/`](specs/20261106-pipeline-harbor-k8s-argocd/spec.md) | — | Done | CI/CD com imagem no Harbor e deploy GitOps (Kustomize + Argo CD), Jenkins equivalente |
-| [`20261106-ai-init-adocao-v2/`](specs/20261106-ai-init-adocao-v2/spec.md) | — | In progress | `fc05cc8` + `.ai-init`, workflows e contexto agora versionados na branch local; doc-check, guard `.env` e agent-setup verificados; GitHub CI aguarda publicação e revisão por IA depende de `ANTHROPIC_API_KEY` |
-| [`20261110-atualizar-java-27/`](specs/20261110-atualizar-java-27/spec.md) | — | In progress | JDK 27.0.1.0.3; `mvn -B clean verify` passou com 13 testes em 2026-11-11; Docker daemon indisponível impede build da imagem e execução Jenkins via agente Docker |
+| [`20261106-ai-init-adocao-v2/`](specs/20261106-ai-init-adocao-v2/spec.md) | — | Done | Guardrails, workflows e contexto versionados e validados |
+| [`20261110-atualizar-java-27/`](specs/20261110-atualizar-java-27/spec.md) | — | Done | JDK 27.0.1.0.3; `mvn -B clean verify` passou com 13 testes no commit a7c6170 / develop |
 | [`20261119-padronizar-maven-wrapper/`](specs/20261119-padronizar-maven-wrapper/spec.md) | — | Done | Spec filha da macro 20261119-padronizar-maven-wrapper; wrapper Maven para 1 POM(s), sem alterar JDK ou comportamento. |
