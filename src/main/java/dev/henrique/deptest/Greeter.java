@@ -1,4 +1,4 @@
-package com.example.deptest;
+package dev.henrique.deptest;
 
 import org.apache.commons.lang3.StringUtils;
 
