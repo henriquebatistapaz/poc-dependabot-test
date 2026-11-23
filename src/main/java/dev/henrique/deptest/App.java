@@ -1,4 +1,4 @@
-package com.example.deptest;
+package dev.henrique.deptest;
 
 import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
